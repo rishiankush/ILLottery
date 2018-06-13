@@ -17,6 +17,25 @@ import { ToastActionsCreators } from 'react-native-redux-toast';
 
 //perform API's
 
+/* Verify DOB API */
+
+export const verifyDob = (data) => {
+  let requestObject = {
+    device_token:'test',
+    device_type:'ios',
+    //date_of_birth:
+  }
+
+  return dispatch => {
+    dispatch(startLoading());
+    RestClient.post("verify_dob",requestObject).then((result) => {
+      console.log('result ******* ',result)
+    }).catch(error => {
+      console.log("error=> " ,error)
+      dispatch(stopLoading());
+    });
+  }
+}; 
 
 /**
 * Initial state

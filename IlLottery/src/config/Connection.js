@@ -1,12 +1,13 @@
 'use strict';
 
 const localhost     = "localhost:3000",
-    staging         = "xyz:4000";
+    staging         = "xyz:4000",
+    herokuServer    = "illinois-lottery.herokuapp.com";
 
-const running_url   = staging,
-    http_url        = `http://${running_url}`,
+const running_url   = herokuServer,
+    http_url        = `https://${running_url}`,
     socket_url      = `ws://${running_url}/websocket`,
-    apiBase_url     = `http://${running_url}/rest/v1/`,
+    apiBase_url     = `https://${running_url}/api/v1/`,
     staticPagesUrl  = `http://${running_url}/`,
     mediaBase_url   = `http://${running_url}/store/files/uploads/`;
 
