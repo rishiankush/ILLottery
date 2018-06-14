@@ -96,7 +96,7 @@ class RestClient {
             context
                 .isConnected()
                 .then(() => {
-                   // console.log("url=> ",Connection.getResturl() + url ," requestObject=> ",params, " x-auth-token => ",token, " x-user-id => ",userId )
+                   console.log("url=> ",Connection.getResturl() + url ," requestObject=> ",params, " x-auth-token => ",token, " x-user-id => ",userId )
                     let query = querystring.stringify(params);
                     fetch(Connection.getResturl() + url + "?" + query, {
                             method: "GET",
