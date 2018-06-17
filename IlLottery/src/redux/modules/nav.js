@@ -3,7 +3,7 @@ import Idx from "../../utilities/Idx";
 import { NavigationActions } from "react-navigation";
 import { AppNavigator } from "../../config/navigator";
 import { REHYDRATE } from "redux-persist/constants";
-//import { EMAIL_VERIFICATION, USER_LOGIN, LOG_OUT } from './user';
+import { GO_TO_TYPE_FORM } from './user';
 
 //Actions
 const GOBACK            = "GOBACK";
@@ -35,23 +35,14 @@ export default function reducer(state = initialState, action) {
     //     firstState = "profile"
     // }
     switch (action.type) {
-        // case EMAIL_VERIFICATION:
-        //     return AppNavigator.router.getStateForAction(
-        //         NavigationActions.reset({
-        //           index: 0,
-        //           actions: [NavigationActions.navigate({ routeName: "profile" })],
-        //         }),
-        //         state
-        //     );
-
-        // case USER_LOGIN:
-        //     return AppNavigator.router.getStateForAction(
-        //         NavigationActions.reset({
-        //           index: 0,
-        //           actions: [NavigationActions.navigate({ routeName: "profile" })],
-        //         }),
-        //         state
-        //     );
+        case GO_TO_TYPE_FORM:
+            return AppNavigator.router.getStateForAction(
+                NavigationActions.reset({
+                  index: 0,
+                  actions: [NavigationActions.navigate({ routeName: "Typeform" })],
+                }),
+                state
+            );
 
         case ResetNavigator:
         // console.log("test test")

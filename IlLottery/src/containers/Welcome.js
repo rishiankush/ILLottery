@@ -18,6 +18,7 @@ import {
 import Constants from '../constants';
 import SubmitButton from '../components/common/FormSubmitButton';
 import { Dropdown } from 'react-native-material-dropdown';
+import moment from 'moment';
 
 type Props = {};
 export default class Welcome extends Component<Props> {
@@ -48,6 +49,22 @@ export default class Welcome extends Component<Props> {
       year:options,
       selectedYearVal:thisYear
     })
+  }
+
+  checkUserDob(){
+    let { selectedMonth, selectedDay, selectedYear } = this.state;
+    let eighteenYearsAgo = moment().subtract(18, "years");
+    let birthday = moment(selectedMonth+'/'+selectedDay+'/'+selectedYear);
+    
+    if (!birthday.isValid()) {
+      alert("invalid date")    
+    }
+    else if (eighteenYearsAgo.isAfter(birthday)) {
+      this.props.navigation.navigate('Signup') 
+    }
+    else {
+      this.props.navigation.navigate('AgeNotVerified') 
+    }
   }
 
   render() {
@@ -94,7 +111,7 @@ export default class Welcome extends Component<Props> {
             />
           </View>
         </View>
-        <SubmitButton text={'ENTER'} textStyle={styles.buttonText} buttonStyle={styles.button} _Press={()=>this.props.navigation.navigate('Signup')}/>
+        <SubmitButton text={'ENTER'} textStyle={styles.buttonText} buttonStyle={styles.button} _Press={()=>this.checkUserDob()}/>
       </View>
       </ImageBackground>
     );

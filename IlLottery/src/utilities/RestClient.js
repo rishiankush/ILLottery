@@ -34,7 +34,7 @@ class RestClient {
                             headers: {
                                 Accept: "application/json",
                                 "Content-Type": "application/json",
-                                "x-auth-token": token,
+                                "X-Client-Authorization": token,
                                 "x-user-id": userId
                             },
                             body: JSON.stringify(params)
