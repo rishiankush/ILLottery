@@ -37,7 +37,7 @@ export default class TimerComponent extends Component<Props> {
     //console.log('props ******* next_lottery_time did mount ******** ')
 
        RestClient.get("events/next_lottery_time").then((result) => {
-         console.log('result ******* ',result)
+         //console.log('result ******* ',result)
           this.setState({nextLotteryTime:result.success})
         }).catch(error => {
           console.log("error=> " ,error)

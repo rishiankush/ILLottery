@@ -26,9 +26,24 @@ class Typeform extends Component<Props> {
   constructor(props){
     super(props);
     this.state={
-      
+      isLoading: true
     }
     // console.log('props ******* next_lottery_time constructor ******** ',props)
+  }
+
+  onNavigationStateChange = eve => {
+    if (eve.loading !== this.state.isLoading) {
+      this.setState({
+        isLoading: eve.loading
+      });
+    }
+    console.log('event ******* ',eve)
+    // if (eve.url.indexOf("api/orders/") > -1) {
+    //   this.props.navigation.replace("paymentStatus", {
+    //     url: eve.url,
+    //     id: this.props.navigation.state.params.id
+    //   });
+    // }
   }
 
   render() {
@@ -48,12 +63,7 @@ class Typeform extends Component<Props> {
         <WebView
         ref={(ref) => { this.webview = ref; }}
         source={{ uri }}
-        onNavigationStateChange={(event) => {
-          if (event.url !== uri) {
-            this.webview.stopLoading();
-            Linking.openURL(event.url);
-          }
-        }}
+        onNavigationStateChange={this.onNavigationStateChange}
       />
       </View>
     );
